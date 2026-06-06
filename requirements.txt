@@ -1,0 +1,31 @@
+# PAD.ai — Phishing Attack Detection using AI
+# ─────────────────────────────────────────────
+
+# ── Core ML ──────────────────────────────────
+scikit-learn>=1.3.0
+pandas>=2.0.0
+numpy>=1.24.0
+joblib>=1.3.0
+scipy>=1.11.0
+
+# ── Traditional ML Baselines ─────────────────
+xgboost>=2.0.0
+optuna>=3.4.0
+
+# ── Deep Learning ────────────────────────────
+torch>=2.1.0
+
+# ── Transformer (BERT-base) ──────────────────
+transformers>=4.35.0
+datasets>=2.14.0
+
+# ── Dashboard UI ─────────────────────────────
+streamlit>=1.28.0
+plotly>=5.17.0
+
+# ── URL Feature Engineering ──────────────────
+tldextract>=3.4.0
+requests>=2.31.0
+
+# ── Testing ──────────────────────────────────
+pytest>=7.4.0
