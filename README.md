@@ -102,8 +102,8 @@ PAD.ai is an end-to-end **Phishing Attack Detection** platform that combines cla
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/PAD.ai.git
-cd PAD.ai
+git clone https://github.com/BharadwajMittapelli/PAD-ai.git
+cd PAD-ai
 
 # Option A: Install with pip
 pip install -r requirements.txt
@@ -213,7 +213,7 @@ webscr, cmd, dispatch, authentication, recover
 ## 📁 Project Structure
 
 ```
-PAD.ai/
+PAD-ai/
 ├── app/
 │   └── streamlit_app.py             # Streamlit dashboard (main entry point)
 │
