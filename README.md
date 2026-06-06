@@ -147,9 +147,9 @@ All models are trained on the same 80/20 train-test split and evaluated with ide
 
 | Model | Accuracy | Precision | Recall | F1 | AUC-ROC | Time |
 |-------|:--------:|:---------:|:------:|:--:|:-------:|:----:|
-| RF + TF-IDF (Optuna) | — | — | — | — | — | ~2 min |
-| XGBoost + TF-IDF (Optuna) | — | — | — | — | — | ~2 min |
-| Bi-GRU (PyTorch) | — | — | — | — | — | ~1 min |
+| RF + TF-IDF (Optuna) 🏆 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | ~12s |
+| XGBoost + TF-IDF (Optuna) | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | ~23s |
+| Bi-GRU (PyTorch) | 0.5000 | 0.5000 | 1.0000 | 0.6667 | 0.5000 | ~18 min |
 | BERT-base (Fine-tuned) | — | — | — | — | — | ~30 min |
 
 > **Note**: Run `python -m src.ml.benchmark` to fill in these values with your actual results. Results are saved to `models/benchmark_results.json`.
