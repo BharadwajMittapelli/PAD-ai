@@ -118,7 +118,7 @@ uv venv && uv pip install -r requirements.txt
 streamlit run app/streamlit_app.py
 ```
 
-The dashboard opens at **http://localhost:8501**. Paste any URL and click **⚡ Run Security Audit**.
+The dashboard opens at **[http://localhost:8501](https://bharadwajmittapelli.github.io/PAD-ai/)**. Paste any URL and click **⚡ Run Security Audit**.
 
 ### Run the ML Benchmark
 
