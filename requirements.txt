@@ -1,4 +1,4 @@
-# PAD.ai — Phishing Attack Detection using AI
+# PAD-ai — Phishing Attack Detection using AI
 # ─────────────────────────────────────────────
 
 # ── Core ML ──────────────────────────────────

@@ -64,7 +64,7 @@ def run_benchmark(
         Set True to skip the slow BERT baseline.
     """
     print("=" * 60)
-    print("  🛡️  PAD.ai — Model Benchmark Suite")
+    print("  🛡️  PAD-ai — Model Benchmark Suite")
     print("=" * 60)
 
     # Load data
@@ -159,7 +159,7 @@ def run_benchmark(
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="PAD.ai Model Benchmark")
+    parser = argparse.ArgumentParser(description="PAD-ai Model Benchmark")
     parser.add_argument("--dataset", type=str, default=None, help="Path to dataset CSV")
     parser.add_argument("--optuna-trials", type=int, default=30, help="Optuna trials")
     parser.add_argument("--bigru-epochs", type=int, default=15, help="Bi-GRU max epochs")

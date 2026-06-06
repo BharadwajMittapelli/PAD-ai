@@ -1,7 +1,7 @@
 """
 src/utils.py
 ============
-PAD.ai — URL Feature Extraction Utilities
+PAD-ai — URL Feature Extraction Utilities
 
 Extracts 25 numerical features from any URL string for ML classification.
 All features are designed to capture phishing-indicator patterns documented

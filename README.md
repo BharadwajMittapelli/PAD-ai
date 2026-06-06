@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" />
 </p>
 
-<h1 align="center">🛡️ PAD.ai — Phishing Attack Detection using AI</h1>
+<h1 align="center">🛡️ PAD-ai — Phishing Attack Detection using AI</h1>
 
 <p align="center">
   <strong>A production-grade, multi-model phishing detection system with a real-time Streamlit dashboard, 25-feature URL intelligence engine, and a 3-tier ML benchmarking pipeline.</strong>
@@ -26,9 +26,9 @@
 
 ---
 
-## 🎯 What is PAD.ai?
+## 🎯 What is PAD-ai?
 
-PAD.ai is an end-to-end **Phishing Attack Detection** platform that combines classical machine learning, deep learning, and transformer-based NLP to identify phishing URLs and emails. It features:
+PAD-ai is an end-to-end **Phishing Attack Detection** platform that combines classical machine learning, deep learning, and transformer-based NLP to identify phishing URLs and emails. It features:
 
 - A **25-feature URL intelligence engine** that extracts Shannon entropy, subdomain patterns, keyword scoring, and more
 - A **real-time Streamlit dashboard** with confidence gauges, feature breakdowns, and scan history
@@ -169,7 +169,7 @@ python -m src.ml.benchmark \
 
 ## 🔬 Feature Engineering
 
-PAD.ai extracts **25 numerical features** from every URL, designed to capture known phishing indicators from academic literature and threat intelligence:
+PAD-ai extracts **25 numerical features** from every URL, designed to capture known phishing indicators from academic literature and threat intelligence:
 
 | # | Feature | Type | Description |
 |---|---------|------|-------------|
@@ -327,7 +327,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## ⚠️ Disclaimer
 
-PAD.ai is built for **educational and research purposes**. While it demonstrates real ML techniques for phishing detection, it should **not** be used as a sole security tool in production environments. Always use enterprise-grade security solutions for real-world threat protection.
+PAD-ai is built for **educational and research purposes**. While it demonstrates real ML techniques for phishing detection, it should **not** be used as a sole security tool in production environments. Always use enterprise-grade security solutions for real-world threat protection.
 
 ---
 

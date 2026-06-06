@@ -1,8 +1,8 @@
-# 🛡️ PAD.ai — Master Build Prompt
+# 🛡️ PAD-ai — Master Build Prompt
 
 ## Role
 You are an expert Python developer and cybersecurity engineer.
-Build a complete, modular, production-grade **Phishing Attack Detection (PAD.ai)** system.
+Build a complete, modular, production-grade **Phishing Attack Detection (PAD-ai)** system.
 
 ---
 
@@ -26,7 +26,7 @@ Build a well-structured ML-powered phishing detection system with:
 ## Directory Structure to Build
 
 ```
-PAD.ai/
+PAD-ai/
 ├── app/
 │   └── streamlit_app.py        ← Streamlit dashboard (main entry)
 ├── src/
@@ -123,7 +123,7 @@ class PhishingDetector:
 Build a full Streamlit dashboard with these sections:
 
 **Layout:**
-- `st.set_page_config` — wide layout, shield icon, "PAD.ai" title
+- `st.set_page_config` — wide layout, shield icon, "PAD-ai" title
 - Gradient CSS header via `st.markdown(unsafe_allow_html=True)`
 - Sidebar with: logo text, About, How it works, Threat Indicators legend
 

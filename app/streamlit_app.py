@@ -1,7 +1,7 @@
 """
 app/streamlit_app.py
 ====================
-PAD.ai — Phishing Attack Detection Dashboard
+PAD-ai — Phishing Attack Detection Dashboard
 
 Run with:
     streamlit run app/streamlit_app.py
@@ -24,7 +24,7 @@ from src.utils import extract_url_features, get_feature_names, get_feature_keys
 
 # ── Page config ─────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="PAD.ai — Phishing Detection",
+    page_title="PAD-ai — Phishing Detection",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -177,7 +177,7 @@ def make_feature_bar(features: dict) -> go.Figure:
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 def render_sidebar():
     with st.sidebar:
-        st.markdown("## 🛡️ PAD.ai")
+        st.markdown("## 🛡️ PAD-ai")
         st.markdown("*Phishing Attack Detection using AI*")
         st.divider()
 
@@ -203,7 +203,7 @@ def render_sidebar():
             st.markdown(f"**{label}** — {risk}")
 
         st.divider()
-        st.caption("PAD.ai v1.0 · Educational use only")
+        st.caption("PAD-ai v1.0 · Educational use only")
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -211,7 +211,7 @@ def main():
     render_sidebar()
 
     # Header
-    st.markdown('<p class="pad-header">🛡️ PAD.ai</p>', unsafe_allow_html=True)
+    st.markdown('<p class="pad-header">🛡️ PAD-ai</p>', unsafe_allow_html=True)
     st.markdown(
         '<p class="pad-sub">Phishing Attack Detection using Artificial Intelligence</p>',
         unsafe_allow_html=True,
