@@ -15,7 +15,7 @@ optuna>=3.4.0
 # ── Deep Learning ────────────────────────────
 torch>=2.1.0
 
-# ── Transformer (BERT-base) ──────────────────
+# ── Transformer (BERT / DistilBERT) ─────────
 transformers>=4.35.0
 datasets>=2.14.0
 
@@ -26,6 +26,13 @@ plotly>=5.17.0
 # ── URL Feature Engineering ──────────────────
 tldextract>=3.4.0
 requests>=2.31.0
+
+# ── Phase 2: Explainability ──────────────────
+shap>=0.42.0
+lime>=0.2.0
+
+# ── Phase 2: Text Processing ────────────────
+nltk>=3.8.0
 
 # ── Testing ──────────────────────────────────
 pytest>=7.4.0
