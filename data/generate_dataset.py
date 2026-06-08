@@ -101,6 +101,71 @@ BRANDS = [
     "Spotify", "Dropbox", "LinkedIn", "Facebook", "Instagram",
 ]
 
+# ── AI-Generated phishing email templates ────────────────────────────────────
+# These simulate LLM-generated phishing: more polished, uniform sentence length,
+# consistent punctuation, fewer spelling errors, and predictable structure.
+AI_PHISH_EMAIL_TEMPLATES = [
+    "Dear valued customer, we have detected unauthorized access to your {brand} account. "
+    "For your security, we require you to verify your identity. Please click the link below "
+    "to confirm your account information and restore full access. Failure to act within "
+    "24 hours may result in permanent account suspension. Thank you for your cooperation.",
+
+    "We are writing to inform you that your {brand} account requires immediate attention. "
+    "Our security systems have identified suspicious activity associated with your account. "
+    "To protect your personal information, please verify your credentials through the secure "
+    "link provided. Your prompt action is greatly appreciated.",
+
+    "This is an automated notification from the {brand} Security Team. We have observed "
+    "unusual login patterns on your account from an unrecognized device. To ensure the "
+    "safety of your account, please complete the verification process. Click the secure "
+    "link below to confirm your identity and update your security settings.",
+
+    "Important notice regarding your {brand} subscription. Your recent payment of $49.99 "
+    "could not be processed due to outdated billing information. Please update your payment "
+    "details within 48 hours to avoid service interruption. Click below to access your "
+    "account settings and resolve this issue promptly.",
+
+    "Thank you for being a loyal {brand} customer. As part of our ongoing security "
+    "enhancement program, we are requiring all users to re-verify their account credentials. "
+    "This process helps us maintain the highest level of security for your personal data. "
+    "Please follow the secure link to complete the verification process.",
+
+    "We regret to inform you that your {brand} account has been temporarily restricted. "
+    "This action was taken after our automated systems detected potential unauthorized "
+    "access. To lift this restriction, please verify your account by clicking the link "
+    "below. We apologize for any inconvenience this may cause.",
+
+    "Our records indicate that your {brand} account password has not been updated in over "
+    "90 days. For your protection, we strongly recommend updating your password immediately. "
+    "Please click the secure link below to create a new password. This will help ensure "
+    "the continued security of your account information.",
+
+    "You have received a refund of $127.50 from {brand}. To process this refund to your "
+    "original payment method, we need you to confirm your banking details. Please click "
+    "the secure link below to verify your information. The refund will be processed within "
+    "3 to 5 business days after verification is complete.",
+
+    "As part of our annual security audit, {brand} is requesting all users to update their "
+    "account security settings. This includes verifying your email address, phone number, "
+    "and payment information. Please complete this process within 72 hours to maintain "
+    "uninterrupted access to your account and all associated services.",
+
+    "We noticed that your {brand} account was accessed from a new location. If this was not "
+    "you, please secure your account immediately by clicking the verification link below. "
+    "Our security team is available around the clock to assist you with any concerns. "
+    "Your account security is our top priority at {brand}.",
+
+    "Congratulations! You have been selected for an exclusive {brand} reward program. As a "
+    "valued customer, you are eligible to receive a complimentary gift card worth $250. To "
+    "claim your reward, please verify your identity through the secure link provided below. "
+    "This offer is valid for the next 48 hours only.",
+
+    "The {brand} IT department has detected that your email storage is approaching its "
+    "maximum capacity. To prevent loss of important messages and attachments, please click "
+    "the link below to upgrade your storage plan. This upgrade is free of charge for all "
+    "existing customers and will be applied to your account automatically.",
+]
+
 IP_OCTETS = lambda: f"{random.randint(1,254)}.{random.randint(0,255)}.{random.randint(0,255)}.{random.randint(1,254)}"
 
 
@@ -128,11 +193,11 @@ def generate_safe_sample() -> dict:
         url += f"?ref={_random_string(5)}"
 
     email_body = _fill_template(random.choice(SAFE_EMAIL_TEMPLATES))
-    return {"url": url, "email_body": email_body, "label": 0}
+    return {"url": url, "email_body": email_body, "label": 0, "is_ai_generated": 0}
 
 
 def generate_phish_sample() -> dict:
-    """Generate a single phishing URL + email sample."""
+    """Generate a single human-written phishing URL + email sample."""
     strategy = random.choice(["keyword_domain", "ip_based", "typosquat", "long_subdomain"])
 
     if strategy == "keyword_domain":
@@ -167,11 +232,71 @@ def generate_phish_sample() -> dict:
         url = url.replace("://", f"://{random.choice(BRANDS).lower()}@", 1)
 
     email_body = _fill_template(random.choice(PHISH_EMAIL_TEMPLATES))
-    return {"url": url, "email_body": email_body, "label": 1}
+    return {"url": url, "email_body": email_body, "label": 1, "is_ai_generated": 0}
 
 
-def generate_dataset(n_safe: int = 1000, n_phish: int = 1000, output_path: str = None):
-    """Generate and save the full dataset."""
+def generate_ai_phish_sample() -> dict:
+    """
+    Generate a single AI-generated phishing URL + email sample.
+
+    AI-generated samples differ from human-written phishing in their
+    stylometric profile: more uniform sentence lengths, polished grammar,
+    and predictable phrasing patterns.
+    """
+    # AI phishing still uses the same URL strategies
+    strategy = random.choice(["keyword_domain", "ip_based", "typosquat", "long_subdomain"])
+
+    if strategy == "keyword_domain":
+        domain = random.choice(PHISH_DOMAINS_PATTERNS)
+        path = random.choice(PHISH_PATHS)
+        protocol = random.choice(["http://", "https://"])
+        url = f"{protocol}{domain}{path}"
+
+    elif strategy == "ip_based":
+        ip = IP_OCTETS()
+        path = random.choice(PHISH_PATHS)
+        protocol = "http://"
+        url = f"{protocol}{ip}{path}"
+
+    elif strategy == "typosquat":
+        legit = random.choice(["paypal", "apple", "google", "amazon", "microsoft"])
+        typo = legit[:3] + _random_string(2) + legit[3:]
+        tld = random.choice([".com", ".net", ".org", ".xyz"])
+        path = random.choice(PHISH_PATHS)
+        url = f"https://{typo}{tld}{path}"
+
+    elif strategy == "long_subdomain":
+        legit = random.choice(["paypal", "apple", "google", "amazon"])
+        sub = f"secure.{legit}.com.{_random_string(4)}"
+        tld = random.choice([".xyz", ".info", ".tk"])
+        path = random.choice(PHISH_PATHS)
+        url = f"https://{sub}{tld}{path}"
+
+    # AI phishing uses the AI-specific templates
+    email_body = _fill_template(random.choice(AI_PHISH_EMAIL_TEMPLATES))
+    return {"url": url, "email_body": email_body, "label": 1, "is_ai_generated": 1}
+
+
+def generate_dataset(
+    n_safe: int = 1000,
+    n_phish: int = 1000,
+    n_ai_phish: int = 1000,
+    output_path: str = None,
+):
+    """
+    Generate and save the full dataset.
+
+    Parameters
+    ----------
+    n_safe : int
+        Number of safe (legitimate) samples.
+    n_phish : int
+        Number of human-written phishing samples.
+    n_ai_phish : int
+        Number of AI-generated phishing samples.
+    output_path : str, optional
+        Output CSV path.  Defaults to ``data/phishing_dataset.csv``.
+    """
     if output_path is None:
         output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "phishing_dataset.csv")
 
@@ -180,18 +305,24 @@ def generate_dataset(n_safe: int = 1000, n_phish: int = 1000, output_path: str =
         samples.append(generate_safe_sample())
     for _ in range(n_phish):
         samples.append(generate_phish_sample())
+    for _ in range(n_ai_phish):
+        samples.append(generate_ai_phish_sample())
 
     random.shuffle(samples)
 
     with open(output_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["url", "email_body", "label"])
+        writer = csv.DictWriter(
+            f, fieldnames=["url", "email_body", "label", "is_ai_generated"]
+        )
         writer.writeheader()
         writer.writerows(samples)
 
-    print(f"[OK] Generated {len(samples)} samples -> {output_path}")
-    print(f"     Safe: {n_safe} | Phishing: {n_phish}")
+    total = len(samples)
+    print(f"[OK] Generated {total} samples -> {output_path}")
+    print(f"     Safe: {n_safe} | Human Phishing: {n_phish} | AI Phishing: {n_ai_phish}")
     return output_path
 
 
 if __name__ == "__main__":
     generate_dataset()
+
