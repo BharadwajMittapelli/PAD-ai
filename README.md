@@ -11,7 +11,7 @@
 <h1 align="center">🛡️ PAD-ai — Phishing Attack Detection using AI</h1>
 
 <p align="center">
-  <strong>A production-grade, multi-model phishing detection system with a real-time Streamlit dashboard, 25-feature URL intelligence engine, and a 3-tier ML benchmarking pipeline.</strong>
+  <strong>A production-grade, multi-model phishing detection system with a multi-page Streamlit dashboard, 40-feature URL intelligence engine, SHAP/LIME explainability, and a hybrid ensemble ML pipeline.</strong>
 </p>
 
 <p align="center">
@@ -30,10 +30,13 @@
 
 PAD-ai is an end-to-end **Phishing Attack Detection** platform that combines classical machine learning, deep learning, and transformer-based NLP to identify phishing URLs and emails. It features:
 
-- A **25-feature URL intelligence engine** that extracts Shannon entropy, subdomain patterns, keyword scoring, and more
-- A **real-time Streamlit dashboard** with confidence gauges, feature breakdowns, and scan history
-- A **3-tier ML benchmarking pipeline** comparing Random Forest, XGBoost, Bi-GRU, and BERT-base
-- **Optuna hyperparameter tuning** for traditional ML models
+- A **40-feature URL intelligence engine** that extracts Shannon entropy, subdomain patterns, keyword scoring, and more
+- A **multi-page Streamlit dashboard** with sidebar navigation, dark/light themes, and multi-input prediction
+- **SHAP + LIME explainability** for full model transparency
+- A **hybrid ensemble pipeline** (DistilBERT + XGBoost + AI-Generated Detector + Stacking)
+- **Multi-input prediction**: email text, URL, or file upload (`.eml` / `.txt`)
+- **Model performance dashboard** with metrics, confusion matrices, and training trends
+- **Optuna hyperparameter tuning** for ensemble weight optimisation
 - **Zero-dependency fallback** — runs a rule-based detector even without trained models
 
 ---
@@ -42,13 +45,17 @@ PAD-ai is an end-to-end **Phishing Attack Detection** platform that combines cla
 
 | Category | Feature | Description |
 |----------|---------|-------------|
-| 🔬 **Intelligence** | 25 URL Features | Shannon entropy, digit ratio, subdomain count, IP detection, keyword scoring, and more |
+| 🔬 **Intelligence** | 40 URL Features | Shannon entropy, digit ratio, subdomain count, IP detection, keyword scoring, punycode, and more |
 | 🤖 **Traditional ML** | Random Forest + TF-IDF | Character n-gram TF-IDF combined with URL features, Optuna-tuned |
 | 🤖 **Traditional ML** | XGBoost + TF-IDF | Gradient-boosted trees with full hyperparameter optimization |
 | 🧠 **Deep Learning** | Bi-GRU (PyTorch) | Bidirectional GRU on character-level tokenized text with early stopping |
-| 🚀 **Transformer** | BERT-base (Fine-tuned) | Hugging Face `bert-base-uncased` fine-tuned for phishing classification |
-| 📊 **Dashboard** | Streamlit UI | Real-time confidence gauge, feature bar chart, binary flag grid, scan history |
-| 🔧 **Engineering** | Optuna Tuning | Automated hyperparameter search (30–50 trials) for RF and XGBoost |
+| 🚀 **Transformer** | DistilBERT (Fine-tuned) | Hugging Face DistilBERT fine-tuned for phishing email classification |
+| 🤖 **AI Detection** | AI-Generated Detector | Stylometric analysis to identify machine-generated phishing emails |
+| 🔗 **Ensemble** | Hybrid Stacking | DistilBERT + XGBoost + AI-Detector fused via stacking meta-learner |
+| 📊 **Dashboard** | Multi-Page Streamlit | 4-page app: Home, Predict, Dashboard, About with dark/light themes |
+| 🧠 **Explainability** | SHAP + LIME | SHAP waterfall for URL features, LIME token highlights for text |
+| 📁 **File Upload** | `.eml` / `.txt` Parser | Email file parsing with BeautifulSoup HTML fallback |
+| 🔧 **Engineering** | Optuna Tuning | Automated hyperparameter search for ensemble weights |
 | 📦 **Data** | Synthetic Generator | Pattern-based generator with 4 phishing strategies (IP, keyword, typosquat, subdomain) |
 
 ---
@@ -56,37 +63,41 @@ PAD-ai is an end-to-end **Phishing Attack Detection** platform that combines cla
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    Streamlit Dashboard                   │
-│              app/streamlit_app.py                        │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌────────┐  │
-│  │ URL Input│  │  Gauge   │  │ Bar Chart│  │History │  │
-│  └────┬─────┘  └──────────┘  └──────────┘  └────────┘  │
-└───────┼─────────────────────────────────────────────────┘
-        │
-        ▼
-┌───────────────────────┐     ┌──────────────────────────┐
-│   src/utils.py        │     │   src/ml/model.py        │
-│   25 URL Features     │────▶│   PhishingDetector       │
-│   Shannon Entropy     │     │   RandomForest (seed)    │
-│   Keyword Scoring     │     │   predict() → bool,float │
-└───────────────────────┘     └──────────────────────────┘
-                                        │
-        ┌───────────────────────────────┼───────────────────────┐
-        ▼                               ▼                       ▼
-┌───────────────┐           ┌───────────────────┐   ┌──────────────────┐
-│ Traditional   │           │ Deep Learning     │   │ Transformer      │
-│ RF + XGBoost  │           │ Bi-GRU (PyTorch)  │   │ BERT-base (HF)   │
-│ TF-IDF+Optuna │           │ Char-level tokens │   │ Fine-tuned       │
-└───────────────┘           └───────────────────┘   └──────────────────┘
-        │                               │                       │
-        └───────────────────────────────┼───────────────────────┘
-                                        ▼
-                              ┌──────────────────┐
-                              │ benchmark.py     │
-                              │ Comparison Table │
-                              │ Acc/Prec/Rec/F1  │
-                              └──────────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│              Streamlit Multi-Page Dashboard (Phase 4)          │
+│                  app/streamlit_app.py                          │
+│  ┌────────┐  ┌──────────┐  ┌───────────┐  ┌───────────────┐  │
+│  │  Home  │  │ Predict  │  │ Dashboard │  │    About      │  │
+│  └────────┘  └────┬─────┘  └───────────┘  └───────────────┘  │
+│                    │  📧 Email  🔗 URL  📁 File Upload       │
+│                    │  🌙/☀️ Dark/Light Theme Toggle           │
+└────────────────────┼─────────────────────────────────────────┘
+                     │
+                     ▼
+          ┌─────────────────────┐
+          │  src/pipeline.py    │
+          │  PhishGuardPredictor│
+          │  (Unified API)      │
+          └────────┬────────────┘
+     ┌─────────────┼─────────────────┐
+     ▼             ▼                 ▼
+┌──────────┐ ┌───────────┐  ┌──────────────┐
+│DistilBERT│ │  XGBoost  │  │ AI-Generated │
+│  (Text)  │ │  (URL)    │  │  Detector    │
+└────┬─────┘ └─────┬─────┘  └──────┬───────┘
+     └─────────────┼───────────────┘
+                   ▼
+         ┌──────────────────┐     ┌──────────────────┐
+         │ Stacking Ensemble│     │ SHAP / LIME      │
+         │ (Meta-Learner)   │     │ Explainability   │
+         └──────────────────┘     └──────────────────┘
+                   │
+                   ▼
+         ┌──────────────────┐
+         │ Fallback Chain:  │
+         │ Hybrid → RF v1   │
+         │ → Rule-based     │
+         └──────────────────┘
 ```
 
 ---
@@ -215,33 +226,39 @@ webscr, cmd, dispatch, authentication, recover
 ```
 PAD-ai/
 ├── app/
-│   └── streamlit_app.py             # Streamlit dashboard (main entry point)
+│   └── streamlit_app.py             # Multi-page Streamlit dashboard (Phase 4)
 │
 ├── src/
 │   ├── __init__.py
 │   ├── utils.py                     # 25-feature URL extraction engine
+│   ├── preprocessing.py             # Extended 40-feature pipeline + text cleaning
+│   ├── pipeline.py                  # PhishGuardPredictor (unified inference API)
 │   └── ml/
 │       ├── __init__.py
 │       ├── model.py                 # PhishingDetector (seed-trained RF)
+│       ├── hybrid_model.py          # DistilBERT + XGBoost + Stacking Ensemble
+│       ├── ai_generated_detector.py # AI-generated content detector
+│       ├── explainability.py        # SHAP + LIME + Optuna ensemble tuning
+│       ├── evaluator.py             # ComprehensiveEvaluator (metrics, plots)
 │       ├── traditional_baseline.py  # RF + XGBoost + TF-IDF + Optuna
 │       ├── deep_baseline.py         # Bi-GRU (PyTorch)
 │       ├── transformer_baseline.py  # BERT-base fine-tuning (HF)
-│       └── benchmark.py            # Orchestrator + comparison table
+│       └── benchmark.py             # Orchestrator + comparison table
 │
 ├── data/
 │   ├── generate_dataset.py          # Synthetic phishing data generator
-│   └── phishing_dataset.csv         # Generated dataset (2,000 samples)
+│   └── phishing_dataset.csv         # Generated dataset
 │
 ├── models/
 │   ├── model.joblib                 # Seed-trained Random Forest
-│   ├── rf_tfidf_best.joblib         # Best Optuna-tuned RF
-│   ├── xgb_tfidf_best.joblib        # Best Optuna-tuned XGBoost
-│   ├── bigru_model.pt               # Bi-GRU PyTorch weights
-│   ├── bert/                        # Fine-tuned BERT-base
+│   ├── hybrid/                      # Hybrid ensemble models
+│   ├── ai_detector/                 # AI-generated content detector
+│   ├── evaluation/                  # Evaluation reports and plots
 │   └── benchmark_results.json       # Comparison metrics
 │
 ├── tests/
-│   └── test_ml.py                   # Pytest unit tests
+│   ├── test_ml.py                   # Phase 1 unit tests
+│   └── test_phase2.py               # Phase 2 integration tests
 │
 ├── MASTER_PROMPT.md                 # AI build prompt (reproducibility)
 ├── README.md                        # This file
@@ -275,12 +292,12 @@ Every URL is decomposed into 25 numerical features, including **Shannon entropy*
 The `PhishingDetector` class wraps a Random Forest classifier that auto-trains on a seed dataset of known safe/phishing URLs. It extracts features, runs inference, and returns `(is_phishing, confidence, features)` in milliseconds.
 
 ### 3. Streamlit Dashboard (`app/streamlit_app.py`)
-The interactive UI provides:
-- **Confidence gauge** (0–100% threat level)
-- **Feature bar chart** showing the most impactful indicators
-- **Binary flag grid** for quick red/green status checks
-- **Raw feature table** (all 25 features expandable)
-- **Scan history** with session persistence
+The multi-page interactive UI provides:
+- **🏠 Home**: Feature cards, quick-start guide, recent scan summary
+- **🔍 Predict**: Multi-input (email, URL, `.eml`/`.txt` upload), confidence gauge, SHAP/LIME explainability, feature breakdown, key flags grid, scan history
+- **📊 Dashboard**: Model comparison charts, confusion matrix, training trends, ablation study table
+- **ℹ️ About**: Architecture overview, tech stack, threat indicator legend
+- **🌙/☀️ Theme**: Dark/light toggle with full CSS variable theming
 
 ### 4. Benchmark Pipeline (`src/ml/benchmark.py`)
 The orchestrator runs all 4 model variants on identical train/test splits and outputs a unified comparison table with Accuracy, Precision, Recall, F1, and AUC-ROC.
@@ -289,19 +306,30 @@ The orchestrator runs all 4 model variants on identical train/test splits and ou
 
 ## 🗺️ Roadmap
 
-- [x] 25-feature URL extraction engine
-- [x] Streamlit real-time dashboard
-- [x] Seed-trained Random Forest detector
-- [x] TF-IDF + RF/XGBoost with Optuna tuning
-- [x] Bi-GRU deep learning baseline (PyTorch)
-- [x] BERT-base transformer baseline (Hugging Face)
-- [x] Unified benchmark comparison table
+- [x] Phase 1: 25-feature URL extraction engine
+- [x] Phase 1: Streamlit real-time dashboard
+- [x] Phase 1: Seed-trained Random Forest detector
+- [x] Phase 1: TF-IDF + RF/XGBoost with Optuna tuning
+- [x] Phase 1: Bi-GRU deep learning baseline (PyTorch)
+- [x] Phase 1: BERT-base transformer baseline (Hugging Face)
+- [x] Phase 1: Unified benchmark comparison table
+- [x] Phase 2: Extended 40-feature URL extraction
+- [x] Phase 2: DistilBERT text classifier
+- [x] Phase 2: XGBoost URL classifier
+- [x] Phase 2: AI-generated content detector
+- [x] Phase 2: Hybrid stacking ensemble
+- [x] Phase 2: SHAP + LIME explainability
+- [x] Phase 2: ComprehensiveEvaluator with ablation studies
+- [x] Phase 4: Multi-page Streamlit dashboard (Home/Predict/Dashboard/About)
+- [x] Phase 4: Multi-input prediction (email, URL, file upload)
+- [x] Phase 4: `.eml` / `.txt` file upload with email parsing
+- [x] Phase 4: Dark/Light theme toggle
+- [x] Phase 4: Model performance dashboard with Plotly charts
+- [x] Phase 4: SHAP waterfall + LIME token visualisations
 - [ ] Kaggle dataset integration (real-world phishing data)
 - [ ] Email header analysis (SPF, DKIM, DMARC)
 - [ ] Browser extension for real-time URL scanning
 - [ ] REST API endpoint for programmatic access
-- [ ] Model explainability (SHAP / LIME)
-- [ ] Ensemble voting classifier (best-of-all-models)
 - [ ] Docker containerization
 - [ ] CI/CD pipeline with GitHub Actions
 
