@@ -1,0 +1,226 @@
+url,email_body,label,category,evasion_technique
+https://admin.o365-verify-update.com/auth,"Subject: URGENT: Final Notice Before Account Deletion
+
+Your account has been flagged for violation of our terms. You have 24 hours to review the violations and appeal. Click the link to review.",1,Authority/Urgency manipulation,Threat of account deletion combined with a plausible-looking admin domain.
+https://paypal-resolution-center.net/case/88123,"Subject: Resolution Center: Unauthorized Login Attempt
+
+We detected a login from a new device in Russia. If this wasn't you, please secure your account immediately by logging in.",1,Authority/Urgency manipulation,Fear-inducing geolocation alert with a fake resolution center URL.
+https://irs-tax-refund-portal.gov.us-auth.com,"Subject: IRS Notice: Your Tax Refund is Pending
+
+Your recent tax return has been processed. However, we need additional verification to release your funds. Please complete the form within 48 hours.",1,Authority/Urgency manipulation,Authority impersonation (IRS) using a complex subdomain structure to hide the true domain.
+https://aws-billing-update.amazon-aws-secure.com,"Subject: Action Required: AWS Account Suspension Notice
+
+Your AWS payment method has expired. All running EC2 instances will be terminated in 12 hours unless you update your billing details.",1,Authority/Urgency manipulation,Targeting developers/admins with high-stakes infrastructure threats.
+https://appleid.apple.com-recovery-session.xyz,"Subject: Your Apple ID was used to sign in to iCloud via a web browser
+
+Your Apple ID was used to sign in to iCloud on a Windows PC. If you did not sign in, you should change your password immediately.",1,Authority/Urgency manipulation,Exact copy of legitimate Apple alert but with a deceiving subdomain.
+https://secure.chase-banking-alert.com/login,"Subject: Security Alert: Temporary Hold on Your Chase Account
+
+We have placed a temporary hold on your account due to suspicious transactions. Please verify your recent activity to lift the hold.",1,Authority/Urgency manipulation,Banking impersonation creating urgency to clear a hold.
+https://workspace.google.com-admin-review.net,"Subject: Google Workspace: Domain Suspension Alert
+
+Your Google Workspace domain registration is missing payment. Services will be disrupted tomorrow. Update payment info now.",1,Authority/Urgency manipulation,Targeting business owners with domain suspension threats.
+https://netflix-membership-renew.com,"Subject: Payment Declined: Your Netflix Membership is on hold
+
+We couldn't process your last payment. Update your payment method to continue enjoying your favorite shows.",1,Authority/Urgency manipulation,Common consumer service urgency hook.
+https://hr-portal-docusign.com/document/view,"Subject: MANDATORY: Updated Employee Code of Conduct (Signature Required)
+
+All employees must sign the updated 2025 Code of Conduct by end of day. Failure to do so will result in HR action.",1,Authority/Urgency manipulation,Internal HR impersonation creating employment-related urgency.
+https://zoom-meeting-invite.com/j/88312,"Subject: Missed Zoom Meeting: Urgent Project Update
+
+You missed a critical project sync. The recording and action items are available here. Please review immediately.",1,Authority/Urgency manipulation,Exploiting FOMO and professional urgency regarding missed meetings.
+https://www.rnicrosoft.com/login,"Subject: Security Update for Windows Defender
+
+Please download the latest security patch for Windows Defender to stay protected against new threats.",1,Subtle homoglyphs & obfuscated URLs,Uses 'rn' instead of 'm' (rnicrosoft).
+https://www.paypaI.com/signin,"Subject: Your account has been limited
+
+Please verify your identity to restore full access to your PayPal account.",1,Subtle homoglyphs & obfuscated URLs,Uses uppercase 'i' instead of lowercase 'L' (paypaI).
+https://www.g00gle.com/accounts/recovery,"Subject: Critical security alert
+
+Someone knows your password. Take action to secure your account.",1,Subtle homoglyphs & obfuscated URLs,Uses zeroes instead of 'o' (g00gle).
+https://www.linĸedin.com/messages,"Subject: You appeared in 14 searches this week
+
+See who's looking at your profile. You have a new message from a recruiter.",1,Subtle homoglyphs & obfuscated URLs,Uses Cyrillic 'ĸ' instead of 'k'.
+https://www.faceb00k.com/login,"Subject: Your page will be unpublished
+
+Your Facebook Page has been reported for community standards violations. Appeal now.",1,Subtle homoglyphs & obfuscated URLs,Uses zeroes instead of 'o'.
+https://www.citibañk.com/banking,"Subject: Statement Available
+
+Your monthly statement is ready to view. Log in to your account.",1,Subtle homoglyphs & obfuscated URLs,Uses 'ñ' instead of 'n'.
+https://www.dropb0x.com/s/file,"Subject: A document was shared with you
+
+Your colleague shared a confidential document via Dropbox.",1,Subtle homoglyphs & obfuscated URLs,Uses zero instead of 'o'.
+https://www.slack-w0rkspace.com/login,"Subject: Slack Workspace Deactivation Warning
+
+Your Slack workspace is inactive and will be archived. Log in to keep it active.",1,Subtle homoglyphs & obfuscated URLs,Uses zero instead of 'o'.
+https://www.github-rep0.com/auth,"Subject: Unauthorized access to your repository
+
+We detected an unauthorized SSH key added to your GitHub account. Review it now.",1,Subtle homoglyphs & obfuscated URLs,Uses zero instead of 'o'.
+https://www.twiiter.com/login,"Subject: Unusual login attempt
+
+We noticed a login from a new device. Is this you?",1,Subtle homoglyphs & obfuscated URLs,Misspelling 'twiiter' instead of 'twitter'.
+https://malicious-redirect.com?url=https://www.microsoft.com,"Subject: Welcome to your new Microsoft Services
+
+Thanks for subscribing! To manage your subscription, please log in. You can also visit our official support page at https://support.microsoft.com.",1,Mixed legitimate + malicious content,Mixes legitimate support links with a malicious redirect in the primary CTA.
+https://fake-login-page.com/auth,"Subject: Invoice #8819 from Amazon.com
+
+Your order has shipped! Tracking number: 1z99999. If you need to return this item, visit our return center [Link]. For privacy policy, visit amazon.com/privacy.",1,Mixed legitimate + malicious content,Includes actual Amazon privacy and terms links but a fake return center link.
+https://secure-update-portal.com,"Subject: Important Update regarding your Chase Credit Card
+
+Dear Customer, please update your profile. Chase Bank, N.A. Member FDIC. Equal Housing Lender. © 2025 JPMorgan Chase & Co.",1,Mixed legitimate + malicious content,"Includes legitimate-looking boilerplate, footers, and copyright text to bypass spam filters."
+https://compromised-site.com/hidden-phish,"Subject: Weekly Newsletter - Tech Trends
+
+Read our latest article on AI advancements! Also, don't forget to update your subscriber preferences [Link].",1,Mixed legitimate + malicious content,A legitimate newsletter template hijacked to include a single malicious link.
+https://bit.ly/malicious-link,"Subject: Salesforce CRM Update Required
+
+Salesforce requires all users to update their passwords. Read the Salesforce Trust status at trust.salesforce.com. Update your password here: [Link]",1,Mixed legitimate + malicious content,Combines real Salesforce trust URLs with a malicious shortlink.
+https://fake-docusign-portal.com,"Subject: Completed: Please DocuSign: NDA_2025.pdf
+
+Your document has been completed. Powered by DocuSign. Visit docusign.com to learn more about electronic signatures.",1,Mixed legitimate + malicious content,Mimics a completed DocuSign email with real DocuSign informational links.
+https://malicious-app-auth.com,"Subject: Connect Zoom to your Google Calendar
+
+Enhance your productivity by connecting Zoom. Google Privacy Policy | Zoom Terms of Service. Connect here: [Link]",1,Mixed legitimate + malicious content,Uses real privacy policy links from both vendors to add legitimacy.
+https://phishing-site.com/verify,"Subject: Your LinkedIn Premium Subscription
+
+Your receipt is attached. If you wish to cancel, click here. LinkedIn Ireland Unlimited Company, Wilton Place, Dublin 2.",1,Mixed legitimate + malicious content,Includes the real physical address and company name of the targeted brand.
+https://fake-hr-survey.com,"Subject: 2025 Employee Engagement Survey
+
+Please take a moment to complete our annual survey. Your feedback is anonymous. View our internal HR policies on the intranet.",1,Mixed legitimate + malicious content,Mentions internal resources to sound like a legitimate internal communication.
+https://malicious-update-server.com,"Subject: MacOS Sequoia 15.2 Update Available
+
+Apple has released a critical security update. Learn more about Apple security updates at support.apple.com. Download the installer here.",1,Mixed legitimate + malicious content,Mixes real Apple support knowledge base links with a fake download link.
+https://tinyurl.com/meeting-notes-123,"Subject: Re: yesterday's meeting
+
+Hey, can you review these notes when you have a sec? Let me know if I missed anything.",1,Low-entropy / conversational phishing,"Extremely short, conversational tone resembling a colleague. No urgent language."
+https://bit.ly/invoice-q3,"Subject: invoice attached
+
+Hi, please find the invoice for last month. Let me know when it's paid. Thanks.",1,Low-entropy / conversational phishing,"Casual lowercase subject and body, typical of quick internal emails."
+https://goo.gl/shared-doc,"Subject: the document
+
+Here is the doc you asked for.",1,Low-entropy / conversational phishing,Minimalist approach. Evades filters looking for complex phishing phrases.
+https://t.co/presentation-draft,"Subject: slides
+
+Draft is ready, take a look before the call.",1,Low-entropy / conversational phishing,"Conversational and brief, assumes existing context."
+https://is.gd/project-update,"Subject: Quick question
+
+Are we still on for later? Also, I updated the tracker here.",1,Low-entropy / conversational phishing,Blends a scheduling question with a malicious link.
+https://ow.ly/team-lunch,"Subject: lunch menu
+
+Please pick what you want for the team lunch on Friday from this menu.",1,Low-entropy / conversational phishing,Uses a mundane topic (team lunch) to lower defenses.
+https://cutt.ly/new-policy,"Subject: fyi
+
+Just saw this, thought you should read it.",1,Low-entropy / conversational phishing,"Vague curiosity gap, very common in quick colleague interactions."
+https://rebrand.ly/contact-info,"Subject: new phone number
+
+Hey, I lost my phone. Can you save my new number? Details here.",1,Low-entropy / conversational phishing,"Personal conversational style, bypassing corporate filters."
+https://short.io/vacation-pics,"Subject: pics
+
+Finally uploaded the photos from the trip!",1,Low-entropy / conversational phishing,Exploits personal relationships and curiosity.
+https://tiny.cc/article-link,"Subject: interesting read
+
+Thought of you when I saw this article.",1,Low-entropy / conversational phishing,"Friendly sharing tone, no typical phishing keywords."
+https://vendor-portal.com/invoice/ACME-Corp,"Subject: Outstanding Invoice for ACME Corp Services
+
+Hi John, checking in on Invoice #4492 for the Q3 consulting services provided to ACME Corp. Please review the attached breakdown.",1,Spear-phishing style (personalized),"Highly personalized, using fake company names and names (simulated)."
+https://benefits-enrollment.com/employee/jdoe,"Subject: Action Required: Your 2025 Health Benefits Enrollment
+
+Jane, your current health plan selection expires next week. Please confirm your dependents on the portal.",1,Spear-phishing style (personalized),Targets an individual's HR benefits with their name.
+https://github-auth-update.com/user/devteam,"Subject: Security Notice for your GitHub Repo 'backend-api'
+
+Alex, we noticed a vulnerability in the dependencies of your 'backend-api' repository. Please apply the patch.",1,Spear-phishing style (personalized),Targets a developer using specific project names.
+https://conference-registration.com/speaker/speaker-id,"Subject: Speaker Details for CyberSec Con 2025
+
+Dear Dr. Smith, please confirm your speaking slot and upload your presentation slides to the speaker portal.",1,Spear-phishing style (personalized),Targets a professional attending a specific conference.
+https://real-estate-docs.com/closing/123-Main-St,"Subject: Closing Documents for 123 Main St
+
+Hi Sarah, the final closing documents for the property are ready for your review before tomorrow's signing.",1,Spear-phishing style (personalized),Targets someone in the middle of a real estate transaction.
+https://school-portal-update.com/parent/student,"Subject: Urgent: Incident Report regarding your child
+
+Dear Parent, please review the attached incident report from the principal's office regarding today's events.",1,Spear-phishing style (personalized),"Targets a parent with alarming, personalized news."
+https://tax-advisor-portal.com/client/2024-returns,"Subject: Missing W-2 for your 2024 Tax Return
+
+Hi Michael, I'm reviewing your file and it looks like we're still missing your W-2 from your previous employer. Upload it here.",1,Spear-phishing style (personalized),Impersonates a tax advisor during tax season.
+https://alumni-network.com/update-profile,"Subject: Update your alumni contact info - Class of 2015
+
+Hi David, we are updating the alumni directory for the Class of 2015. Please ensure your details are correct.",1,Spear-phishing style (personalized),Uses educational background for personalization.
+https://local-gym-membership.com/billing,"Subject: Issue with your monthly gym membership payment
+
+Hi Emily, your card on file for the Downtown Fitness Center declined this morning. Please update it.",1,Spear-phishing style (personalized),Targets local service memberships.
+https://freelance-platform.com/project/award,"Subject: You have been awarded the 'Website Redesign' project
+
+Congratulations Chris! The client has awarded you the project. Please accept the terms and begin work.",1,Spear-phishing style (personalized),Targets freelancers with fake project awards.
+https://secure-file-transfer.com/download/Invoice_PDF.exe,"Subject: FW: Unpaid Invoice - Second Notice
+
+Please find the attached invoice. I cannot open the PDF, can you check if it works for you?",1,Attachment/social engineering references,Social engineering referencing an attachment that is actually a link to malware.
+https://cloud-drive-share.com/view/document,"Subject: Scan from Office Printer (Scanner_001)
+
+You have received a new scanned document from the office printer. Click to view or download.",1,Attachment/social engineering references,Impersonates automated office equipment notifications.
+https://hr-secure-docs.com/view/salary-changes,"Subject: CONFIDENTIAL: 2025 Salary Adjustments
+
+Attached is the encrypted spreadsheet containing the proposed salary adjustments for your department.",1,Attachment/social engineering references,Uses curiosity and confidentiality to bait the user.
+https://legal-document-review.com/subpoena,"Subject: LEGAL NOTICE: Subpoena to Testify
+
+You have been served a subpoena. Please download the attached legal documents for your court date.",1,Attachment/social engineering references,Uses fear and legal authority.
+https://courier-tracking.com/package/1Z999,"Subject: Delivery Attempt Failed - Package #1Z999
+
+We tried to deliver your package today but no one was home. Print the attached shipping label to reschedule.",1,Attachment/social engineering references,Impersonates parcel delivery services.
+https://voicemail-system.com/listen/msg-123,"Subject: New Voicemail from (Unknown Number) - 0:45s
+
+You received a new voicemail. Click here to listen to the audio message.",1,Attachment/social engineering references,Impersonates PBX or VOIP system notifications.
+https://e-ticket-portal.com/download/ticket,"Subject: Your Flight Itinerary and E-Ticket
+
+Thank you for booking with us. Your e-ticket is attached. Please review your flight details.",1,Attachment/social engineering references,Targets travel arrangements.
+https://secure-fax-service.com/view/fax,"Subject: Incoming Fax: 4 Pages from Medical Office
+
+You have a new confidential fax. View the document securely online.",1,Attachment/social engineering references,Impersonates online fax services.
+https://job-applicant-portal.com/resume/view,"Subject: Application for Marketing Manager position - Resume Attached
+
+Hi, please find my resume attached for the open position. I look forward to hearing from you.",1,Attachment/social engineering references,Targets HR or hiring managers with fake resumes.
+https://vendor-remittance.com/download/receipt,"Subject: Payment Remittance Advice
+
+Please find attached the remittance advice for the payment processed today. Let us know if you have questions.",1,Attachment/social engineering references,Targets accounts receivable departments.
+https://ai-assistant-auth.com/connect,"Subject: Authorize your Enterprise Copilot AI
+
+To continue using your AI coding assistant, please re-authenticate your IDE integration via the new secure portal.",1,Zero-day style tactics (new in 2025-2026),"Targets developers using modern AI assistants (Copilot, etc)."
+https://deepfake-verification.com/verify-audio,"Subject: Urgent: Verify Voice Authorization
+
+Our system detected a potential deepfake voice authorization attempt on your account. Listen to the recording to confirm if it was you.",1,Zero-day style tactics (new in 2025-2026),Exploits fears of deepfakes and AI voice cloning.
+https://web3-wallet-sync.com/connect,"Subject: Critical Smart Contract Upgrade Required
+
+A vulnerability was found in the decentralized exchange router. Upgrade your wallet connection to protect your assets.",1,Zero-day style tactics (new in 2025-2026),Targets crypto/Web3 users with technical jargon.
+https://quantum-encryption-update.com/install,"Subject: Upgrade to Post-Quantum Cryptography
+
+As part of our new security compliance, all employees must install the post-quantum encryption certificate. Download here.",1,Zero-day style tactics (new in 2025-2026),Uses emerging tech buzzwords (Quantum) to sound authoritative.
+https://metaverse-office.com/meeting-room,"Subject: Invitation to VR Strategy Session
+
+You've been invited to the virtual strategy session. Connect your VR headset to the enterprise metaverse portal.",1,Zero-day style tactics (new in 2025-2026),Exploits enterprise adoption of VR/Metaverse tools.
+https://ai-generated-content-flag.com/appeal,"Subject: Your content has been flagged as AI-generated
+
+Your recent submission was flagged by our AI detectors. If this is a mistake, you must appeal within 24 hours to avoid a ban.",1,Zero-day style tactics (new in 2025-2026),Exploits policies around AI-generated content.
+https://neural-link-diagnostic.com/run,"Subject: Routine BCI Diagnostic Check
+
+Please run the diagnostic check on your Brain-Computer Interface device to ensure firmware is up to date.",1,Zero-day style tactics (new in 2025-2026),"Highly futuristic, targeting early adopters of new hardware."
+https://satellite-internet-config.com/update,"Subject: Starlink/LEO Satellite Firmware Update
+
+To maintain optimal connection speeds on your satellite internet dish, please install this firmware update.",1,Zero-day style tactics (new in 2025-2026),Targets users of LEO satellite internet services.
+https://autonomous-vehicle-portal.com/recall,"Subject: URGENT: Software Recall for your Autonomous Vehicle
+
+A critical bug in the self-driving software has been identified. Click to schedule an over-the-air update.",1,Zero-day style tactics (new in 2025-2026),Targets owners of autonomous vehicles.
+https://nft-airdrop-claim.com/wallet,"Subject: You are eligible for the 2026 Protocol Airdrop
+
+Claim your tokens by verifying your wallet address. This is a limited time offer for early protocol adopters.",1,Zero-day style tactics (new in 2025-2026),Exploits ongoing crypto trends and airdrop farming.
+https://security-update.apple-icloud-login.com,"Subject: iCloud Storage Full
+
+Your iCloud storage is full. Upgrade now for 50GB free.",1,Mixed legitimate + malicious content,Variation of standard techniques
+https://www.micros0ft-support.com,"Subject: Windows License Expired
+
+Renew your Windows license immediately.",1,Subtle homoglyphs & obfuscated URLs,Variation of standard techniques
+https://hr-portal.com/mandatory-training,"Subject: Mandatory Compliance Training
+
+Complete your 2026 compliance training by Friday.",1,Authority/Urgency manipulation,Variation of standard techniques
+https://goo.gl/quick-link,"Subject: checking in
+
+Are you available for a quick chat?",1,Low-entropy / conversational phishing,Variation of standard techniques
+https://vendor-invoices.com/pay/10293,"Subject: Overdue Invoice 10293
+
+Please pay the attached invoice to avoid late fees.",1,Spear-phishing style (personalized),Variation of standard techniques
