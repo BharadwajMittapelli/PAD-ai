@@ -1,0 +1,4 @@
+Dataset,Accuracy,Precision,Recall,F1
+Enron Spam,0.6,0.0,0.0,0.0
+UCI SMS Spam,0.8659368269921034,0.0,0.0,0.0
+Recent Phishing (2025),0.8,1.0,0.782608695652174,0.8780487804878049
