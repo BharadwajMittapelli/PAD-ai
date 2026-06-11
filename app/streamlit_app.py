@@ -21,6 +21,8 @@ import io
 import json
 import email as email_lib
 import re
+import sqlite3
+import datetime
 from email import policy as email_policy
 from typing import Dict, List, Optional, Tuple
 
@@ -65,6 +67,63 @@ if "theme" not in st.session_state:
 
 if "history" not in st.session_state:
     st.session_state["history"] = []
+
+# ── Database Setup ───────────────────────────────────────────────────────────
+DB_PATH = os.path.join(ROOT, "phishguard_logs.db")
+
+def init_db():
+    """Initialise the SQLite database for prediction logging."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS prediction_logs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp TEXT,
+                input_snippet TEXT,
+                result TEXT,
+                confidence REAL,
+                model_used TEXT,
+                ai_generated TEXT
+            )
+        ''')
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"Error initializing DB: {e}")
+
+def log_prediction_to_db(entry: Dict):
+    """Save a prediction result to the SQLite database."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        
+        timestamp = datetime.datetime.now().isoformat()
+        input_snippet = entry.get("Input", "")
+        result = entry.get("Result", "")
+        # Parse confidence from string "XX.X%" to float
+        conf_str = entry.get("Confidence", "0%").replace("%", "")
+        try:
+            confidence = float(conf_str)
+        except ValueError:
+            confidence = 0.0
+            
+        model_used = entry.get("Model", "")
+        ai_generated = entry.get("AI-Gen", "")
+        
+        c.execute('''
+            INSERT INTO prediction_logs (timestamp, input_snippet, result, confidence, model_used, ai_generated)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (timestamp, input_snippet, result, confidence, model_used, ai_generated))
+        
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        # We don't want DB errors to break the Streamlit UI, so we catch and ignore/log
+        print(f"Error logging to DB: {e}")
+
+# Initialise the DB once
+init_db()
 
 
 def get_theme_css() -> str:
@@ -964,6 +1023,7 @@ def page_predict():
             entry["AI-Gen"] = "🤖 Yes" if ai_generated else "👤 No"
 
         st.session_state["history"].append(entry)
+        log_prediction_to_db(entry)
 
     # ── Scan history ─────────────────────────────────────────────────────
     if st.session_state["history"]:

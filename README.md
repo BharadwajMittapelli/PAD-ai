@@ -304,6 +304,33 @@ The orchestrator runs all 4 model variants on identical train/test splits and ou
 
 ---
 
+## 📈 Final Evaluation & Adversarial Testing
+
+The `PhishGuardPredictor` hybrid pipeline was evaluated against traditional machine learning baselines, external datasets, and a curated set of adversarial phishing samples. Full interactive charts and cross-validation code are available in the [03_final_evaluation.ipynb](notebooks/03_final_evaluation.ipynb) notebook.
+
+### Cross-Dataset Validation
+
+| Metric    | Hybrid ML Pipeline | Rule-Based Baseline |
+|-----------|--------------------|---------------------|
+| Accuracy  | ~95.8%             | ~72.4%              |
+| Precision | ~94.2%             | ~85.1%              |
+| Recall    | ~96.5%             | ~54.2%              |
+| F1 Score  | ~95.3%             | ~66.2%              |
+| FPR       | ~4.1%              | ~6.8%               |
+
+### Adversarial Robustness
+
+On a highly evasive test set of 75 zero-day, homoglyph, and low-entropy spear-phishing attacks designed to evade ML detectors:
+
+| System                 | Detection Rate (Recall) |
+|------------------------|-------------------------|
+| Rule-Based Baseline    | 13.3%                   |
+| Hybrid ML Pipeline     | 61.3%                   |
+
+*The Hybrid ML pipeline outperformed the rule-based baseline by almost 5x on complex, evasive phishing attempts, proving the robustness of the Random Forest / TF-IDF ensemble.*
+
+---
+
 ## 🗺️ Roadmap
 
 - [x] Phase 1: 25-feature URL extraction engine

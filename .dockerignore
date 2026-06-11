@@ -1,0 +1,10 @@
+.venv
+__pycache__
+*.pyc
+.git
+.gitignore
+.env
+data/*.csv
+models/benchmark_results.json
+notebooks/.ipynb_checkpoints
+phishguard_logs.db
