@@ -7,3 +7,5 @@ joblib
 supabase
 python-multipart
 requests
+streamlit
+plotly
